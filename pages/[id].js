@@ -47,7 +47,7 @@ export default function Entry({itemData}) {
           height={itemData.data.height}
             />
             </div>
-          <button className="btn btn-success"><a href={itemData.data.youtube}>Watch the Quote</a></button>
+          <button className="btn btn-success"><a href={itemData.data.youtube} className="whiteFont">Watch the Quote</a></button>
           <h5 className="my-3">Affiliation:</h5>
                {itemData.data.affiliation.map((affiliation) => (
                 <div key={affiliation}>
