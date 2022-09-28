@@ -32,32 +32,39 @@ export default function Entry({itemData}) {
     console.log(itemData);
   return (
     <Layout character>
-  <div className="card mx-auto card-class mt-4 p-0 border border-dark">      
-  <div className="card-body">
-        <div className="row">
-        <div className="col-md-8">
-          <div className="card-body">
+    <div className="card mx-auto card-class mt-4 p-0 border border-dark">
+    <div className="row">
+      <div className="col-md-8">
+        <div className="card-body">
           <h2 className="card-title fw-bold text-decoration-underline">{itemData.data.author}</h2>
           <h4>Quote:</h4>
-        <p className="card-text">{itemData.data.quote}</p>
-        {/* using a teneray(?) to ask if database has spices in its dtabase */}
-        {itemData.data.youtube ?
-          <a href={itemData.data.youtube}><button className="btn btn-primary">Watch Quote</button></a> 
-          : null
-        }
-        <div className="d-block">
-            <Image
-            src={itemData.data.image}
-            alt={itemData.data.alt}
-            width={itemData.data.width}
-            height={itemData.data.height}
-              />
+          <p>{itemData.data.quote}</p>
+          <div className="d-block">
+          <Image
+          src={itemData.data.image}
+          alt={itemData.data.alt}
+          width={itemData.data.width}
+          height={itemData.data.height}
+            />
+            </div>
+          <button className="btn btn-success"><a href={itemData.data.youtube}>Watch the Quote</a></button>
+          <h5 className="my-3">Affiliation:</h5>
+              <div key={itemData.data.affiliation}>
+              <ul>
+                <li>
+                  {itemData.data.affiliation}
+                </li>
+              </ul>
               </div>
-      </div>
-      </div>
-      </div>
+            
+            {itemData.related ? // if there are related id, display this header 
+              <h5 className="my-3">Type: {itemData.data.type}</h5> : null
+            }
+        </div>
       </div>
     </div>
-  </Layout>
+  </div>
+  
+    </Layout>
   );
 }
