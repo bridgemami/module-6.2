@@ -1,5 +1,5 @@
-import Layout from '../../components/layout';
-import { getCharactersIds, getCharactersData } from '../../lib/resources';
+import Layout from '../components/layout';
+import { getCharactersIds, getCharactersData } from '../lib/resources';
 import Image from 'next/image';
 import Head from 'next/head';
 import Link from 'next/link';
@@ -35,7 +35,7 @@ export default function Entry({itemData}) {
     <div className="card mx-auto card-class mt-4 p-0 border border-dark">
     <div className="row">
       <div className="col-md-8">
-        <div className="card-body">
+        <div className="card-body w-50">
           <h2 className="card-title fw-bold text-decoration-underline">{itemData.data.author}</h2>
           <h4>Quote:</h4>
           <p>{itemData.data.quote}</p>
@@ -49,13 +49,15 @@ export default function Entry({itemData}) {
             </div>
           <button className="btn btn-success"><a href={itemData.data.youtube}>Watch the Quote</a></button>
           <h5 className="my-3">Affiliation:</h5>
-              <div key={itemData.data.affiliation}>
-              <ul>
-                <li>
-                  {itemData.data.affiliation}
-                </li>
-              </ul>
-              </div>
+               {itemData.data.affiliation.map((affiliation) => (
+                <div key={affiliation}>
+                <ul>
+                  <li>
+                    {affiliation}
+                  </li>
+                </ul>
+                </div>
+              ))}
             
             {itemData.related ? // if there are related id, display this header 
               <h5 className="my-3">Type: {itemData.data.type}</h5> : null
